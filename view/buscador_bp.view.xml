@@ -1,0 +1,410 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" 
+	 controllerName="idom.fiori.cust.report.controller.buscador_bp" 
+	        xmlns:m="sap.m" 
+	 xmlns:variants="sap.ui.comp.variants" 
+	xmlns:filterbar="sap.ui.comp.filterbar" 
+         xmlns:core="sap.ui.core" 
+         xmlns:form="sap.ui.layout.form"
+         xmlns:f="sap.f">
+    <f:DynamicPage headerExpanded="true" showFooter="false" class="sapUiSizeCompact">
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <variants:VariantManagement/>
+                </f:heading>
+                <f:actions/>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader pinnable="true">
+                <f:content>
+                    <filterbar:FilterBar id="ListReportFilterBar" 
+                    					 useToolbar="false"  
+                    					 search="_onSearch"
+                    					 showGoOnFB="true">                       
+                        <filterbar:filterItems>             
+                            <filterbar:FilterItem label="{i18n>Search}" name="searchField">
+                                <filterbar:control>
+									<m:SearchField id="selSearch"
+												   placeholder=" "
+												   search="_onSearchField"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>                                 
+                            <filterbar:FilterItem label="{i18n>BusinessPartner}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775130901---0">
+                                <filterbar:control>
+                                    <m:Input id="selPartner"
+                                    		 type="Text" 
+                                    		 showValueHelp="false" 
+                                    		 enabled="true" 
+                                    		 visible="true" 
+                                    		 width="auto" 
+                                    		 valueHelpOnly="false" 
+                                    		 maxLength="0"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>Role}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775156923---0">
+                                <filterbar:control>
+									<m:MultiComboBox id="comboRoles" 
+												items="{
+															path:'/ZSD_C_UTIL_ROLE',
+															filters:[{
+																        path: 'Role', 
+																        operator: 'StartsWith',
+																        value1: 'Z'
+																    }],
+															templateShareable:false
+													   }"
+												selectionChange="onCountryChange">
+										<core:Item key="{Role}" text="{Rol_Description}" />
+									</m:MultiComboBox>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>Name}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775246300---0">
+                                <filterbar:control>
+                                    <m:Input id="selName"
+                                    		 type="Text" 
+                                    		 showValueHelp="false" 
+                                    		 enabled="true" 
+                                    		 visible="true" 
+                                    		 width="auto" 
+                                    		 valueHelpOnly="false" 
+                                    		 maxLength="0"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>SearchCode}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775260476---0">
+                                <filterbar:control>
+                                    <m:Input id="selSearchCode" 
+                                    		 type="Text" 
+                                    		 showValueHelp="false" 
+                                    		 enabled="true" 
+                                    		 visible="true" 
+                                    		 width="auto" 
+                                    		 valueHelpOnly="false" 
+                                    		 maxLength="0"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>PostalCode}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775282099---0">
+                                <filterbar:control>
+                                    <m:Input id="selPostalCode"
+                                    		 type="Text" 
+                                    		 showValueHelp="false" 
+                                    		 enabled="true" 
+                                    		 visible="true" 
+                                    		 width="auto" 
+                                    		 valueHelpOnly="false" 
+                                    		 maxLength="0"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>City}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775301172---0">
+                                <filterbar:control>
+                                    <m:Input id="selCity" 
+                                             type="Text" 
+                                             showValueHelp="false" 
+                                             enabled="true" 
+                                             visible="true" 
+                                             width="auto" 
+                                             valueHelpOnly="false" 
+                                             maxLength="0"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>Country}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775326403---0">
+                                <filterbar:control>
+									<m:ComboBox id="comboCountry" 
+												items="{
+															path:'F4>/ZSD_C_UTIL_COUNTRIES',
+															templateShareable:false,
+															length: 9999
+												 	   }"
+												selectionChange="onCountryChange">
+										<core:Item key="{F4>Country}" text="{F4>CountryName}" />
+									</m:ComboBox>                                               
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>Region}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775354500---0">
+                                <filterbar:control>
+									<m:ComboBox id="comboRegion" 
+												items="{
+															path:'F4>/ZSD_C_UTIL_REGIO',
+															templateShareable:false
+													   }">		
+										<core:Item key="{F4>Regio}" text="{F4>RegioName}" />
+									</m:ComboBox>                                      
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+							<filterbar:FilterItem label="{i18n>TaxNumber}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775407579---0">
+                                <filterbar:control>
+                                    <m:Input id="selTaxNumber"
+                                    		 type="Text" 
+                                    		 showValueHelp="false" 
+                                    		 enabled="true" 
+                                    		 visible="true" 
+                                    		 width="auto" 
+                                    		 valueHelpOnly="false" 
+                                    		 maxLength="0"/>
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>TaxCategory}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775380907---0">
+                                <filterbar:control>
+ 									<m:ComboBox id="comboTaxCategory" 
+												items="{
+															path:'/ZSD_C_UTIL_TAXTYPE',
+															templateShareable:false
+														}">		
+										<core:Item key="{taxtype}" text="{text}" />
+									</m:ComboBox>                                    
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+
+                            <filterbar:FilterItem label="{i18n>CustomerClasification}" name="CustomerClasification">
+                                <filterbar:control>
+									<m:MultiComboBox id="comboCustomerClasification" 
+												items="{
+															path:'/ZSD_C_CUST_CLASIFICATION',
+															templateShareable:false
+													   }"
+												selectionChange="">
+										<core:Item key="{customer_clasification}" text="{customer_clasification_desc}" />
+									</m:MultiComboBox>                                
+                                </filterbar:control>
+                            </filterbar:FilterItem>     
+                            <filterbar:FilterItem label="{i18n>IndustryCode1}" name="IndustryCode1">
+                                <filterbar:control>
+									<m:MultiComboBox id="comboIndustryCode" 
+												items="{
+															path:'/ZSD_C_INDUSTRY_CODE',
+															templateShareable:false
+													   }"
+												selectionChange="">
+										<core:Item key="{Industry_code}" text="{Industry_code_desc}" />
+									</m:MultiComboBox>                                
+                                </filterbar:control>
+                            </filterbar:FilterItem>                                                       
+                            <filterbar:FilterItem label="{i18n>IndustrySystem}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775468060---0">
+                                <filterbar:control>
+ 									<m:ComboBox id="comboIndustrySystem" 
+												items="{
+															path:'/ZSD_C_UTIL_SYS_INDUSTRY',
+															templateShareable:false
+													   }"
+												selectionChange="onIndustrySystemChange">
+										<core:Item key="{sis_ind_code}" text="{sistem_industry}" />
+									</m:ComboBox>                                   
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                            <filterbar:FilterItem label="{i18n>Industry}" name="Fiori_ListReport_ListReport_0-filterBars-Fiori_ListReport_FilterBar-1-filters-sap_ui_comp_filterbar_FilterItem-1494775504795---0">
+                                <filterbar:control>
+   									<m:MultiComboBox id="comboIndustry" 
+												items="{
+															path:'/ZSD_C_UTIL_INDUSTRY',
+															templateShareable:false
+													   }"
+												selectionChange="">
+										<core:Item key="{industry_code}" text="{industry}" />
+									</m:MultiComboBox>                                   
+                                </filterbar:control>
+                            </filterbar:FilterItem>
+                        </filterbar:filterItems>
+                    </filterbar:FilterBar>
+                </f:content>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <m:VBox fitContainer="true">
+                <m:items>
+                    <m:Table id="ListaBP"
+                    		 width="100%" 
+                    	     growing="true" 
+               			     growingScrollToLoad="true" 
+                  		     growingThreshold="25" 
+                             mode="None" 
+                             itemPress="_onFioriListReportTableItemPress" 
+                             updateFinished="_onFioriListReportTableUpdateFinished" 
+                             items="{/ZSD_C_BP}">
+                        <m:columns>
+                            <m:Column width="auto" minScreenWidth="Phone">
+                                <m:header>
+                                    <m:Text text="Partner" width="auto"/>
+                                </m:header>
+                            </m:Column>
+                            <m:Column width="auto" minScreenWidth="Phone">
+                                <m:header>
+                                    <m:Text text="{i18n>LegalForm}" width="auto"/>
+                                </m:header>
+                            </m:Column>
+                            <m:Column width="auto" minScreenWidth="Phone">
+                                <m:header>
+                                    <m:Text text="{i18n>SearchCode}" width="auto"/>
+                                </m:header>
+                            </m:Column>
+                            <m:Column width="auto" minScreenWidth="Phone">
+                                <m:header>
+                                    <m:Text text="{i18n>Role}" width="auto"/>
+                                </m:header>
+                            </m:Column>
+                            <m:Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                <m:header>
+                                    <m:Text text="{i18n>TaxNumber}"/>
+                                </m:header>
+                            </m:Column>
+                            <m:Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                <m:header>
+                                    <m:Text text="{i18n>Industry}"/>
+                                </m:header>
+                            </m:Column>
+                            <m:Column width="auto" hAlign="Left" vAlign="Top" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                <m:header>
+                                    <m:Text text="{i18n>Address}"/>
+                                </m:header>
+                            </m:Column>
+                            <m:Column width="auto" hAlign="Left" vAlign="Middle" popinDisplay="Inline" mergeDuplicates="false" demandPopin="true" minScreenWidth="Tablet">
+                                <m:header>
+                                    <m:Text text="{i18n>Communication}"/>
+                                </m:header>
+                            </m:Column>
+                        </m:columns>
+                        <m:items>
+                            <m:ColumnListItem type="Navigation">
+                                <m:cells>
+                                    <m:ObjectIdentifier title="{partner}" text="{partnerName}"/>
+                                    <m:ObjectStatus text="{legalenty}" width="auto"/>
+                                    <m:ObjectStatus text="{search}" width="auto"/>
+                                    <!--<m:ObjectStatus text="{Role}" width="auto"/>  -->
+                                 <!--    <m:List
+                                    		width="auto"
+                                    		id="role_list"
+                                    		items="{
+															path: 'to_Rol',
+															templateShareable:false
+												   }"
+                                    		>
+                                    <m:StandardListItem
+                                    			width="max-content"
+												title="{
+															path:'Role_Description',
+															formatter: '.formatter.cutText'
+														}"
+									/>
+                                    </m:List>-->
+                                    
+                                   <m:List
+                                    		items="{
+															path: 'to_Rol',
+															templateShareable:false
+												   }"
+                                    		>
+                                    <m:items>
+                                    	<m:ObjectListItem
+												title="{Role_Description}"
+										>
+										</m:ObjectListItem>
+									</m:items>
+                                    </m:List>
+                                    <m:ObjectStatus text="{tax_type}-{partnertax}" width="auto"/> 
+                                    <form:Form width="auto" visible="true">
+                                        <form:formContainers>
+                                            <form:FormContainer visible="true">
+                                                <form:formElements>
+                                                    <form:FormElement visible="true">
+                                                        <form:fields>
+                                                            <m:Text text="{system_ind}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                    <form:FormElement visible="true">
+                                                        <form:fields>
+                                                            <m:Text text="{sector_ind}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                </form:formElements>
+                                            </form:FormContainer>
+                                        </form:formContainers>
+                                        <form:layout>
+                                            <form:ResponsiveGridLayout columnsM="1" columnsL="2" emptySpanL="0" emptySpanM="0" emptySpanS="0" visible="true" labelSpanS="12" labelSpanM="2" labelSpanL="4"/>
+                                        </form:layout>
+                                        <form:title/>
+                                    </form:Form>
+                                    <form:Form width="auto" visible="true">
+                                        <form:formContainers>
+                                            <form:FormContainer visible="true">
+                                                <form:formElements>
+                                                    <form:FormElement visible="true">
+                                                        <form:fields>
+                                                            <m:Text text="{street} {house_no}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                    <form:FormElement visible="true">
+                                                        <form:fields>
+                                                            <m:Text text="{post_code} {city}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                    <form:FormElement visible="true">
+                                                        <form:fields>
+                                                            <m:Text text="{region}, {country}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>                                                    
+                                                    <form:FormElement visible="true">
+                                                        <form:fields>
+                                                            <m:Text text="{AddrLine3}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                </form:formElements>
+                                            </form:FormContainer>
+                                        </form:formContainers>
+                                        <form:layout>
+                                            <form:ResponsiveGridLayout columnsM="1" columnsL="2" emptySpanL="0" emptySpanM="0" emptySpanS="0" visible="true" labelSpanS="12" labelSpanM="2" labelSpanL="4"/>
+                                        </form:layout>
+                                        <form:title/>
+                                    </form:Form>
+                                    <form:Form width="auto" visible="true">
+                                        <form:formContainers>
+                                            <form:FormContainer visible="true">
+                                                <form:formElements>
+                                                    <form:FormElement visible="{ path:'phone',
+																				 formatter: '.formatter.hasValue'}">
+                                                        <form:fields>
+                                                            <m:Text text="({i18n>Phone_Mark}):{phone}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                    <form:FormElement visible="{ path:'mobile',
+																				 formatter: '.formatter.hasValue'}">
+                                                        <form:fields>
+                                                            <m:Text text="({i18n>Mobile_Mark}):{mobile}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                    <form:FormElement visible="{ path:'fax',
+																				 formatter: '.formatter.hasValue'}">
+                                                        <form:fields>
+                                                            <m:Text text="({i18n>Fax_Mark}):{fax}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                    <form:FormElement visible="true">
+                                                        <form:fields>
+                                                            <m:Text text="{email}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"/>
+                                                        </form:fields>
+                                                        <form:label/>
+                                                    </form:FormElement>
+                                                </form:formElements>
+                                            </form:FormContainer>
+                                        </form:formContainers>
+                                        <form:layout>
+                                            <form:ResponsiveGridLayout columnsM="1" columnsL="2" emptySpanL="0" emptySpanM="0" emptySpanS="0" visible="true" labelSpanS="12" labelSpanM="2" labelSpanL="4"/>
+                                        </form:layout>
+                                        <form:title/>
+                                    </form:Form>
+                                </m:cells>
+                            </m:ColumnListItem>
+                        </m:items>
+                    </m:Table>
+                </m:items>
+            </m:VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

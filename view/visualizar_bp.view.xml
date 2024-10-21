@@ -1,0 +1,651 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="idom.fiori.cust.report.controller.visualizar_bp" xmlns:uxap="sap.uxap" xmlns:m="sap.m" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form">
+    <uxap:ObjectPageLayout 
+    		showTitleInHeaderContent="false" 
+    		showHeaderContent="true" 
+    		showEditHeaderButton="false" 
+    		showFooter="false" 
+    		class="sapUiSizeCompact">
+        <uxap:headerTitle>
+            <uxap:ObjectPageHeader 
+            	objectImageURI="" 
+            	objectTitle="{partnerName}" 
+            	objectSubtitle="" 
+            	isObjectIconAlwaysVisible="false" 
+            	isObjectTitleAlwaysVisible="true" 
+            	isObjectSubtitleAlwaysVisible="true" 
+            	showPlaceholder="false">
+                <uxap:navigationBar>
+                    <m:Bar>
+                        <m:contentLeft>
+                            <m:Button type="Back" press="_onFioriObjectPageHeaderPress"/>
+                        </m:contentLeft>
+                        <m:contentMiddle>
+                            <m:Title text="{partner} - {partnerName}"/>
+                        </m:contentMiddle>
+                        <m:contentRight/>
+                    </m:Bar>
+                </uxap:navigationBar>
+                <uxap:actions/>
+                <uxap:breadCrumbsLinks/>
+            </uxap:ObjectPageHeader>
+        </uxap:headerTitle>
+        <uxap:headerContent>
+            <m:VBox>
+                <m:items/>
+            </m:VBox>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="{i18n>GeneralData}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>GeneralData}">
+                        <uxap:blocks>
+                            <layout:Grid defaultSpan="XL12 L12 M12 S12">
+                                <layout:content>
+                                    <form:Form>
+                                        <form:layout>
+                                            <form:ResponsiveGridLayout labelSpanXL="12" labelSpanL="12" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="4" columnsL="3" columnsM="2" singleContainerFullSize="false"/>
+                                        </form:layout>
+                                        <form:formContainers>
+                                            <form:FormContainer title="{i18n>GeneralData}">
+                                                <form:formElements>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Name}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{partnerName}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>CustomerClasification}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{custom_clas}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>                                                    
+                                                     <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>IndustryCode1}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{industy_code_desc}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>                                                    
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>IndustrySystem}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{system_ind}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Industry}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{sector_ind}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Language}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{language}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>TaxData}" required="false" design="Bold" visible = "{path:'isEmployee', formatter: '.formatterHideEmployee'}"  />
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{tax_type}-{partnertax}" visibile = "{path:'isEmployee', formatter: '.formatterHideEmployee'}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>SearchCode}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{search}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                </form:formElements>
+                                            </form:FormContainer>
+                                            <form:FormContainer title="{i18n>CommunicationData}">
+                                                <form:formElements>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Telephone}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{phone}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>MobilePhone}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{mobile}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Fax}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{fax}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Email}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{email}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                </form:formElements>
+                                            </form:FormContainer>
+                                            <form:FormContainer title="{i18n>AddressData}">
+                                                <form:formElements>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Street}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{street}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Number}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{house_no}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>City}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{city}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>PostalCode}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{post_code}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Region}" required="false" design="Bold"/>
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{region}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                    <form:FormElement>
+                                                        <form:label>
+                                                            <m:Label text="{i18n>Country}" required="false" design="Bold" />
+                                                        </form:label>
+                                                        <form:fields>
+                                                            <m:ObjectStatus text="{country}"/>
+                                                        </form:fields>
+                                                    </form:FormElement>
+                                                </form:formElements>
+                                            </form:FormContainer>
+                                        </form:formContainers>
+                                    </form:Form>
+                                </layout:content>
+                            </layout:Grid>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="{i18n>PeopleResponsible}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>PeopleResponsible}">
+                        <uxap:blocks>
+                            <m:Table width="100%" 
+                            		 growing="true" 
+                     				 growingThreshold="10" 
+                            		 mode="None" 
+                            		 items="{to_Employees}">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar design="Transparent">
+                                        <m:content>
+                                            <m:ToolbarSpacer/>
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                                <m:columns>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Name}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AT}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AG}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Email}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem type="Active">
+                                        <m:cells>
+                                            <m:Link text="{resp_name}" href="{EmployeeURL}" target="_blank"/>
+                                            <m:ObjectStatus text="{tec_area}"/>
+                                            <m:ObjectStatus text="{geo_area}"/>
+                                            <m:ObjectStatus text="{resp_mail}"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="{i18n>ContactPersons}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>ContactPersons}">
+                        <uxap:blocks>
+                            <m:Table 
+                            			width="100%" 
+                            			growing="true" 
+                     				    growingThreshold="10" 
+                            			mode="None" 
+                            			items="{to_ContactPerson}">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar design="Transparent">
+                                        <m:content>
+                                            <m:ToolbarSpacer/>
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                                <m:columns>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Partner}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Name}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Telephone}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>MobilePhone}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Email}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem type="Active">
+                                        <m:cells>
+                                            <m:ObjectStatus text="{related_partner}"/>
+                                            <m:Link text="{partnerName}" href="{ContactPerURL}" target="_blank"/>
+                                            <m:ObjectStatus text="{phone}"/>
+                                            <m:ObjectStatus text="{mobile}"/>
+                                            <m:ObjectStatus text="{email}"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="{i18n>RelatedPartners}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>RelatedPartners}">
+                        <uxap:blocks>
+                            <m:Table id="Partners"
+                            	     width="100%" 
+                            		 growing="true" 
+                     				 growingThreshold="10"  
+                            		 mode="MultiSelect" 
+                            		 itemPress="_onRelatedPartnersPress"
+                            		 items="{to_RelatedPartners}">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar design="Transparent">
+                                        <m:content>
+                                            <m:ToolbarSpacer/>
+                                            <m:Button text="{i18n>AddElementsOfPartner}" 
+                                            		  iconFirst="false" 
+                                            		  type="Emphasized"
+                                            		  press="_onFilterElements">
+                                                <m:layoutData>
+                                                    <m:OverflowToolbarLayoutData moveToOverflow="true"/>
+                                                </m:layoutData>
+                                            </m:Button>
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                                <m:columns>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Partner}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Name}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Relation}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem type="Active">
+                                        <m:cells>
+                                            <m:ObjectStatus text="{related_partner}"/>
+                                            <m:Link text="{partnerName}" href="{RelatedBPURL}" target="_blank"/>
+                                            <m:ObjectStatus text="{relation}"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="{i18n>BusinessOpportunities}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>BusinessOpportunities}">
+                        <uxap:blocks>
+                            <m:Table id="BusinessOpportunities"
+                            	     width="100%" 
+                            		 growing="true" 
+                     				 growingThreshold="10" 
+                            		 mode="None" 
+                            		 itemPress="_onOpportunityPress"
+                            		 items="{to_BO}">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar design="Transparent">
+                                        <m:content>
+                                            <m:ToolbarSpacer/>
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                                <m:columns>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>BusinessOpportunity}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                        <m:header>
+                                            <m:Text text="{i18n>Sold-to-Party}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AT}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AG}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Status}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>BusinessLine}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ServiceType}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ProductType}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>PersonResponsible}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ProposalManager}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>                                    
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem type="Active">
+                                        <m:cells>
+                                            <m:ObjectIdentifier title="{description}" text="{bo_code}" width="auto" wrapping="false"/>
+                                            <m:ObjectStatus text="{partnerName}" width="auto" wrapping="false"/>
+                                            <m:ObjectStatus text="{tecn_area} " width="auto" wrapping="false"/>
+                                            <m:ObjectStatus text="{geo_area}" width="auto" wrapping="false"/>
+                                            <m:ObjectStatus text="{status}" width="auto" wrapping="false"/>
+                                            <m:ObjectStatus text="{bus_line}" width="auto" wrapping="false"/>
+                                            <m:ObjectStatus text="{stype}" width="auto" wrapping="false"/>
+                                            <m:ObjectStatus text="{ptype}" width="auto" wrapping="false"/>
+                                            <m:Link text="{BPRespoName}" href="{BO_URL}" target="_blank" />
+                                            <m:Link text="{BPProp_MngName}" href="{Proposal_Manager_URL}" target="_blank" />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="{i18n>Proposals}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>Proposals}">
+                        <uxap:blocks>
+                            <m:Table id="Proposals"
+                            		 width="100%" 
+	                            	 growing="true" 
+                     				 growingThreshold="10" 
+                            		 itemPress="_onProposalPress"
+                            		 items="{to_PR}">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar design="Transparent">
+                                        <m:content>
+                                            <m:ToolbarSpacer/>
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                                <m:columns>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Proposal}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                        <m:header>
+                                            <m:Text text="{i18n>Sold-to-Party}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AT}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AG}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Status}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>BusinessLine}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ServiceType}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ProductType}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>PersonResponsible}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ProposalManager}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem type="Active">
+                                        <m:cells>
+                                            <m:ObjectIdentifier title="{proposal_name}" text="{propcode}"/>
+                                            <m:ObjectStatus text="{partnerName}"/>
+                                            <m:ObjectStatus text="{tecn_area}"/>
+                                            <m:ObjectStatus text="{geo_area}"/>
+                                            <m:ObjectStatus text="{status}"/>
+                                            <m:ObjectStatus text="{business_line}"/>
+                                            <m:ObjectStatus text="{stype}"/>
+                                            <m:ObjectStatus text="{ptype}"/>
+                                            <m:Link text="{BPRespoName}" href="{PROP_URL}" target="_blank"/>
+                                            <m:Link text="{BPProp_MngName}" href="{Proposal_Manager_URL}" target="_blank"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection title="{i18n>Projects}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection title="{i18n>Projects}">
+                        <uxap:blocks>
+                            <m:Table id="Projects"
+                            		 width="100%" 
+                            	   	 growing="true" 
+                     				 growingThreshold="10" 
+                     				 mode="None" 
+                     				 itemPress="_onProjectPress"
+                     				 items="{to_Projects}">
+                                <m:headerToolbar>
+                                    <m:OverflowToolbar design="Transparent">
+                                        <m:content>
+                                            <m:ToolbarSpacer/>
+                                        </m:content>
+                                    </m:OverflowToolbar>
+                                </m:headerToolbar>
+                                <m:columns>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Project}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                        <m:header>
+                                            <m:Text text="{i18n>Sold-to-Party}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AT}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>AG}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>Status}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>BusinessLine}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ServiceType}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ProductType}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                    <m:Column width="auto" minScreenWidth="Phone">
+                                        <m:header>
+                                            <m:Text text="{i18n>ProjectManager}" width="auto"/>
+                                        </m:header>
+                                    </m:Column>
+                                </m:columns>
+                                <m:items>
+                                    <m:ColumnListItem type="Active">
+                                        <m:cells>
+                                            <m:ObjectIdentifier title="{text}" text="{project_id}"/>
+                                            <m:ObjectStatus text="{SoldToPartyName}"/>
+                                            <m:ObjectStatus text="{tecn_area}"/>
+                                            <m:ObjectStatus text="{geo_area}"/>
+                                            <m:ObjectStatus text="{status}"/>
+                                            <m:ObjectStatus text="{business_line}"/>
+                                            <m:ObjectStatus text="{stype}"/>
+                                            <m:ObjectStatus text="{ptype}"/>
+                                            <m:Link text="{ManagerName}" href="{ManagerURL}" target="_blank"/>
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</mvc:View>
