@@ -1,0 +1,175 @@
+{ "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.2.0",
+    "id": "idom.fiori.cust.report",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "dataSources":{
+      
+       "main": {
+          "uri": "/sap/opu/odata/sap/ZSD_BP_ODATA_SRV",
+          "type": "OData",
+          "settings": {
+          	"defaultUpdateMethod": "PUT",
+            "odataVersion": "2.0"
+          }
+        },
+	   "helper": {
+			"uri": "/sap/opu/odata/sap/ZSD_UTIL_HELPF4_SRV",
+			"type": "OData",
+			"settings": {
+				"defaultUpdateMethod": "PUT",
+				"odataVersion": "2.0"
+			}
+		}
+      
+    },
+      "title": "{{appTitle}}",
+      "description": "{{appDescription}}",
+      "ach": "ach",
+      "resources": "resources.json",
+      "sourceTemplate": {
+        "id": "ui5template.basicSAPUI5ApplicationProject",
+        "version": "1.32.0"
+      }
+  },
+  "sap.ui": {
+    "_version": "1.2.0",
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+     "supportedThemes": [
+        "sap_bluecrystal"
+     ]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "rootView": {
+      "viewName": "idom.fiori.cust.report.view.visualizar_bp",
+      "type": "XML"
+    },
+    "dependencies": {
+      "minUI5Version": "1.32.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+        "i18n": {
+          "type": "sap.ui.model.resource.ResourceModel",
+          "uri": "i18n/i18n.properties"
+        },
+        
+          "":{
+          "dataSource": "main",
+          "type": "sap.ui.model.odata.v2.ODataModel",
+          "settings": {
+            "loadMetadataAsync": false,
+            "json": true,
+            "bJSON": true,
+            "defaultBindingMode": "TwoWay",
+            "useBatch": true,
+            "refreshAfterChange": false,
+            "disableHeadRequestForToken": true
+           }
+          },
+		"F4": {
+			"dataSource": "helper",
+			"type": "sap.ui.model.odata.v2.ODataModel",
+			"settings": {
+				"loadMetadataAsync": false,
+				"json": true,
+				"bJSON": true,
+				"defaultBindingMode": "OneWay",
+				"useBatch": true,
+				"refreshAfterChange": false,
+				"disableHeadRequestForToken": true
+			}
+		}          
+      },
+      "resources": {
+        "css": []
+      },
+      "routing": {
+          "config": {
+            "routerClass": "sap.m.routing.Router",
+            "viewType": "XML",
+            "viewPath": "idom.fiori.cust.report.view",
+            "controlId": "App",
+            "clearTarget": false,
+            "controlAggregation": "pages",
+            "bypassed": {
+              "target": [
+                   "buscador_bp"
+              ]
+            }
+          },
+          "targets": {
+            
+            "buscador_bp": {
+            "controlAggregation": "pages",
+            "viewName": "buscador_bp",
+            "viewId": "buscador_bp",
+            "viewLevel": 1,
+            "transition": "slide"
+            },
+            
+            "visualizar_bp": {
+            "controlAggregation": "pages",
+            "viewName": "visualizar_bp",
+            "viewId": "visualizar_bp",
+            "viewLevel": 2,
+            "transition": "slide"
+            }
+            
+          },
+         "routes": [
+              
+              {
+                "pattern": "buscador_bp/:context:",
+                "name": "buscador_bp",
+                "target": [
+                  "buscador_bp"
+                  ]
+              },
+              
+              {
+                "pattern": "",
+                "name": "default",
+                "target": [
+                  "buscador_bp"
+                  ]
+              },
+              
+              {
+                "pattern": "visualizar_bp/:context:",
+                "name": "visualizar_bp",
+                "target": [
+                  "visualizar_bp"
+                  ]
+              }
+              
+          ]
+      }
+    }
+  }
